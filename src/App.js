@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./Styles/App.scss";
+import PropTypes from "prop-types";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+
+import { UserNameChange, PasswordChange, AuthRequest } from "./Redux/action";
+
+import { LoginScreen } from "./Screens/Login/Login";
+
+class App extends Component {
+	handleUserNameChange = (e) => {
+		const u = e.target.value;
+
+		this.props.dispatch(UserNameChange(u));
+	};
+	handlePasswordChange = (e) => {
+		const p = e.target.value;
+
+		this.props.dispatch(PasswordChange(p));
+	};
+	handleFormSubmit = (e) => {
+		const { userName, password } = this.props;
+		e.preventDefault();
+
+		this.props.dispatch(AuthRequest({ userName, password }));
+		this.props.history.push("/user");
+	};
+	render() {
+		return (
+			<div className="main-screen">
+				<LoginScreen
+					data={this.props}
+					handleFormSubmit={this.handleFormSubmit}
+					handleUserNameChange={this.handleUserNameChange}
+					handlePasswordChange={this.handlePasswordChange}
+				></LoginScreen>
+			</div>
+		);
+	}
 }
 
-export default App;
+App.propTypes = {
+	userName: PropTypes.string,
+	password: PropTypes.string,
+};
+
+const mapStateToProps = (state) => ({
+	userName: state.userName,
+	password: state.password,
+});
+
+// export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);
