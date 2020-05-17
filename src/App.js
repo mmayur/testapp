@@ -16,6 +16,7 @@ class App extends Component {
 			password: "",
 		};
 	}
+
 	handleUserNameChange = (e) => {
 		const u = e.target.value;
 
@@ -35,8 +36,15 @@ class App extends Component {
 		);
 	};
 	render() {
+		const isToken = localStorage.hasOwnProperty("token");
+		if (isToken) {
+			window.location.href = "/user";
+		}
+
 		return (
 			<div className="main-screen">
+				{this.props.error !== "" && <div>{this.props.error}</div>}
+
 				<LoginScreen
 					data={this.state}
 					handleFormSubmit={this.handleFormSubmit}
@@ -48,10 +56,10 @@ class App extends Component {
 	}
 }
 
-// App.propTypes = {
-// 	userName: PropTypes.string,
-// 	password: PropTypes.string,
-// };
+App.propTypes = {
+	token: PropTypes.string,
+	error: PropTypes.string,
+};
 
 const mapStateToProps = (state) => ({
 	token: state.auth.token,
