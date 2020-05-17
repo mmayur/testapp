@@ -28,8 +28,7 @@ class User extends Component {
 	};
 
 	render() {
-		const { users, error } = this.props.users;
-		console.log("users --- screen--- ", users);
+		const { users } = this.props.users;
 
 		const filtered =
 			this.props.users &&
