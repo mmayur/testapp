@@ -14,6 +14,7 @@ class App extends Component {
 		this.state = {
 			userName: "",
 			password: "",
+			isLoading: false,
 		};
 	}
 
@@ -30,10 +31,14 @@ class App extends Component {
 	handleFormSubmit = (e) => {
 		const { history } = this.props;
 		e.preventDefault();
-
+		this.setState({ isLoading: true });
 		this.props.dispatch(
 			authorize(this.state.userName, this.state.password, history)
 		);
+
+		setTimeout(() => {
+			this.setState({ isLoading: false });
+		}, 1000);
 	};
 	render() {
 		const isToken = localStorage.hasOwnProperty("token");
@@ -44,13 +49,18 @@ class App extends Component {
 		return (
 			<div className="main-screen">
 				{this.props.error !== "" && <div>{this.props.error}</div>}
-
-				<LoginScreen
-					data={this.state}
-					handleFormSubmit={this.handleFormSubmit}
-					handleUserNameChange={this.handleUserNameChange}
-					handlePasswordChange={this.handlePasswordChange}
-				></LoginScreen>
+				{this.state.isLoading ? (
+					<div>
+						<h1>Loading ......</h1>
+					</div>
+				) : (
+					<LoginScreen
+						data={this.state}
+						handleFormSubmit={this.handleFormSubmit}
+						handleUserNameChange={this.handleUserNameChange}
+						handlePasswordChange={this.handlePasswordChange}
+					></LoginScreen>
+				)}
 			</div>
 		);
 	}

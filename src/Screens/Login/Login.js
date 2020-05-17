@@ -20,6 +20,7 @@ export const LoginScreen = ({
 					name="password"
 					onChange={handlePasswordChange}
 					value={data.password}
+					autoComplete="on"
 				/>
 				<button type="submit" disabled={!data.userName || !data.password}>
 					Login

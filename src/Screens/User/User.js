@@ -32,11 +32,11 @@ class User extends Component {
 
 		const filtered =
 			this.props.users &&
-			this.props.users.users.filter(function (hero) {
+			this.props.users.users.filter(function (u) {
 				return (
-					hero.age >= 20 &&
-					hero.age < 30 &&
-					hero.firstName.length + hero.lastName.length >= 10
+					u.age >= 20 &&
+					u.age < 30 &&
+					u.firstName.length + u.lastName.length >= 10
 				);
 			});
 
@@ -51,7 +51,11 @@ class User extends Component {
 				{this.state.showFiltere && <button onClick={this.clear}>Clear</button>}
 				{users && !this.state.showFiltere && <CardList data={users} />}
 				{users && this.state.showFiltere && <CardList data={filtered} />}
-				{!users && <div>Loading</div>}
+				{users && users.length <= 0 && (
+					<div>
+						<h1>Loading ...</h1>
+					</div>
+				)}
 			</div>
 		);
 	}
