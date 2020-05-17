@@ -1,19 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getUsersSaga } from "../../Redux/actions/index.js";
+// function handleLogout() {
+//   localStorage.removeItem('access_token');
+//   localStorage.clear();
+//   window.location.reload();
+// }
 
-const User = (props) => {
-	return (
-		<div>
-			<h1>User List</h1>
+// const User = () => {
+// 	return (
+// 		<div>
+// 			<h2>user screen...</h2>
+// 		</div>
+// 	);
+// };
+class User extends Component {
+	componentDidMount() {
+		this.props.getUsersSaga();
+	}
+	render() {
+		const { users, error } = this.props.users;
+		return (
 			<div>
+				<h2>user screen...</h2>
 				<button
 					onClick={() => {
-						props.history.push("/");
+						this.props.getUsersSaga();
 					}}
 				>
-					Logout
+					click
 				</button>
 			</div>
-		</div>
-	);
-};
-export default User;
+		);
+	}
+}
+
+const mapStateToProps = (state) => ({
+	users: state.usersReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	getUsersSaga: () => dispatch(getUsersSaga()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);

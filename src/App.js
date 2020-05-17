@@ -4,33 +4,41 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 
-import { UserNameChange, PasswordChange, AuthRequest } from "./Redux/action";
+import { authorize } from "./Redux/actions/authActions";
 
 import { LoginScreen } from "./Screens/Login/Login";
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			userName: "",
+			password: "",
+		};
+	}
 	handleUserNameChange = (e) => {
 		const u = e.target.value;
 
-		this.props.dispatch(UserNameChange(u));
+		this.setState({ userName: u });
 	};
 	handlePasswordChange = (e) => {
 		const p = e.target.value;
 
-		this.props.dispatch(PasswordChange(p));
+		this.setState({ password: p });
 	};
 	handleFormSubmit = (e) => {
-		const { userName, password } = this.props;
+		const { history } = this.props;
 		e.preventDefault();
 
-		this.props.dispatch(AuthRequest({ userName, password }));
-		this.props.history.push("/user");
+		this.props.dispatch(
+			authorize(this.state.userName, this.state.password, history)
+		);
 	};
 	render() {
 		return (
 			<div className="main-screen">
 				<LoginScreen
-					data={this.props}
+					data={this.state}
 					handleFormSubmit={this.handleFormSubmit}
 					handleUserNameChange={this.handleUserNameChange}
 					handlePasswordChange={this.handlePasswordChange}
@@ -40,14 +48,14 @@ class App extends Component {
 	}
 }
 
-App.propTypes = {
-	userName: PropTypes.string,
-	password: PropTypes.string,
-};
+// App.propTypes = {
+// 	userName: PropTypes.string,
+// 	password: PropTypes.string,
+// };
 
 const mapStateToProps = (state) => ({
-	userName: state.userName,
-	password: state.password,
+	token: state.auth.token,
+	error: state.auth.error,
 });
 
 // export default withRouter(connect(mapStateToProps)(App));
