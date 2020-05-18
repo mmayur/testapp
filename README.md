@@ -18,6 +18,8 @@
 
     Alternately : open browser and search http://localhost:3000
 
+    NOTE : Filter criteria used for filter Button : `age>=20 && age<30 && length of full name >=10`
+
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
