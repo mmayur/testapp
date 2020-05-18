@@ -19,7 +19,11 @@ ReactDOM.render(
 					<ProtectedRoute path="/user" component={User} />
 					<Route
 						path="*"
-						component={() => <h2>Sorry.... Page not found :( </h2>}
+						component={() => (
+							<h2 style={{ textAlign: "center" }}>
+								Sorry.... Page not found :({" "}
+							</h2>
+						)}
 					/>
 				</Switch>
 			</BrowserRouter>
