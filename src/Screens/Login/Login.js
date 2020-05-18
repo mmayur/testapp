@@ -15,7 +15,7 @@ export const LoginScreen = ({
 					onChange={handleUserNameChange}
 					value={data.userName}
 					placeholder="User name"
-					autoFocus="true"
+					autoFocus={true}
 				/>
 				<input
 					type="password"
@@ -34,7 +34,7 @@ export const LoginScreen = ({
 					Login
 				</button>
 				<small>
-					<pre>Credentials : admin , 123456</pre>
+					<pre>Credentials: admin,123456</pre>
 				</small>
 				{/* <small style={{ color: "#888" }}>
 					<pre>mayurmorey@gmail.com</pre>

@@ -3,7 +3,7 @@ import "./styles/style.css";
 
 const Card = ({ data }) => {
 	return (
-		<ul class="cards">
+		<ul className="cards">
 			{data &&
 				data.map((u) => (
 					<li className="cards-item" key={u.accountId}>

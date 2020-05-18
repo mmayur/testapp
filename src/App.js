@@ -81,5 +81,4 @@ const mapStateToProps = (state) => ({
 	error: state.auth.error,
 });
 
-// export default withRouter(connect(mapStateToProps)(App));
 export default connect(mapStateToProps)(App);
