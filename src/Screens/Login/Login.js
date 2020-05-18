@@ -33,9 +33,12 @@ export const LoginScreen = ({
 				>
 					Login
 				</button>
-				<small style={{ color: "#888" }}>
+				<small>
 					<pre>Credentials : admin , 123456</pre>
 				</small>
+				{/* <small style={{ color: "#888" }}>
+					<pre>mayurmorey@gmail.com</pre>
+				</small> */}
 			</form>
 		</div>
 	);

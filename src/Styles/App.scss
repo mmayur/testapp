@@ -24,7 +24,8 @@ body {
 		}
 		.main-card {
 			padding: 100px;
-			box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+			// box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+			box-shadow: 0 2px 4px -1px #888;
 		}
 	}
 
@@ -38,6 +39,7 @@ body {
 		cursor: pointer;
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		background: transparent;
+		outline: none;
 	}
 
 	.btn:hover {
@@ -53,5 +55,9 @@ body {
 		top: 5%;
 		color: #e13e3e;
 		text-transform: capitalize;
+	}
+
+	small {
+		color: #888;
 	}
 }

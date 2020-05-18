@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./styles/style.css";
 
 const Card = ({ data }) => {
 	return (
@@ -11,11 +11,8 @@ const Card = ({ data }) => {
 							<div className="card-content">
 								<h2 className="card-title">{u.lastName}</h2>
 								<p className="card-text">
-									{u.firstName} | {u.age}
+									{u.firstName} | <small> {u.age}</small>
 								</p>
-								{/* <p className="card-sub-text">
-									<small>Age : {u.age}</small>
-								</p> */}
 							</div>
 						</div>
 					</li>

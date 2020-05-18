@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsersSaga } from "../../Redux/actions/index.js";
 import CardList from "./CardList";
-import "./style.css";
+import "./styles/style.css";
 
 class User extends Component {
 	constructor(props) {
