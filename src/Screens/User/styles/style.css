@@ -41,7 +41,7 @@
 	}
 }
 
-@media (max-width: 2500px) and (min-width: 700px) {
+@media (max-width: 4000px) and (min-width: 700px) {
 	li {
 		width: 33.33%;
 	}
