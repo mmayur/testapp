@@ -1,0 +1,58 @@
+/* Design */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cards-item {
+	display: flex;
+	padding: 1rem;
+	background-color: white;
+	border-radius: 0.25rem;
+
+	flex-direction: column;
+	overflow: hidden;
+}
+.card-content {
+	padding: 5%;
+}
+
+.card {
+	margin: 5%;
+	box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+.card-content .card-sub-text {
+	text-align: left;
+}
+@media only screen and (max-width: 600px) {
+	li {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1400px) and (min-width: 700px) {
+	li {
+		width: 33.33%;
+	}
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+	li {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+	li {
+		width: 50%;
+	}
+}

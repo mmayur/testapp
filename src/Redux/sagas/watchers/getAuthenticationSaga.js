@@ -15,7 +15,7 @@ function* workerGetAuthentication({ payload: { login, password, history } }) {
 			history.push("/");
 		}
 	} catch (error) {
-		yield put({ type: "AUTH_FAILURE", payload: "error" });
+		yield put({ type: "AUTH_FAILURE", payload: "Check you password" });
 	}
 }
 

@@ -36,6 +36,9 @@ class App extends Component {
 			authorize(this.state.userName, this.state.password, history)
 		);
 
+		this.setState({ userName: "" });
+		this.setState({ password: "" });
+
 		setTimeout(() => {
 			this.setState({ isLoading: false });
 		}, 1000);
@@ -48,10 +51,12 @@ class App extends Component {
 
 		return (
 			<div className="main-screen">
-				{this.props.error !== "" && <div>{this.props.error}</div>}
+				{this.props.error !== "" && (
+					<div className="error-message">{this.props.error}</div>
+				)}
 				{this.state.isLoading ? (
-					<div>
-						<h1>Loading ......</h1>
+					<div style={{ textAlign: "center" }}>
+						<h6>Loading ....</h6>
 					</div>
 				) : (
 					<LoginScreen

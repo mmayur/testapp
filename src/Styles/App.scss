@@ -1,8 +1,9 @@
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+	// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+	// 	"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+	// 	sans-serif;
+	font-family: sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	.main-screen {
@@ -12,10 +13,45 @@ body {
 		height: 100vh;
 
 		div {
-			width: 250px;
+			width: 350px;
 			input {
-				width: 250px;
+				width: 100%;
+				padding: 6px 10px;
+				margin: 4px 0;
+				box-sizing: border-box;
+				outline: none;
 			}
 		}
+		.main-card {
+			padding: 100px;
+			box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+		}
+	}
+
+	.btn {
+		padding: 0.8rem;
+		font-size: 14px;
+		text-transform: uppercase;
+		border-radius: 4px;
+		font-weight: 400;
+		display: block;
+		cursor: pointer;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		background: transparent;
+	}
+
+	.btn:hover {
+		background-color: rgba(255, 255, 255, 0.12);
+		border: 1px solid #888;
+	}
+	button:disabled {
+		display: none;
+	}
+	.error-message {
+		text-align: center;
+		position: absolute;
+		top: 5%;
+		color: #e13e3e;
+		text-transform: capitalize;
 	}
 }

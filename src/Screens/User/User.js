@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsersSaga } from "../../Redux/actions/index.js";
 import CardList from "./CardList";
+import "./style.css";
 
 class User extends Component {
 	constructor(props) {
@@ -41,19 +42,33 @@ class User extends Component {
 			});
 
 		return (
-			<div>
-				<h2>user screen...</h2>
-				<button onClick={this.handleLogout}>Logout</button>
-				{!this.state.showFiltere && (
-					<button onClick={this.filtere}>Filter</button>
-				)}
+			<div style={{ textAlign: "center" }}>
+				<h2>User Data</h2>
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<button onClick={this.handleLogout} className="btn">
+						Logout
+					</button>
+					{!this.state.showFiltere && (
+						<button onClick={this.filtere} className="btn">
+							Filter
+						</button>
+					)}
+					{this.state.showFiltere && (
+						<button
+							onClick={this.clear}
+							className="btn"
+							style={{ border: "1px solid #888" }}
+						>
+							Clear
+						</button>
+					)}
+				</div>
 
-				{this.state.showFiltere && <button onClick={this.clear}>Clear</button>}
 				{users && !this.state.showFiltere && <CardList data={users} />}
 				{users && this.state.showFiltere && <CardList data={filtered} />}
 				{users && users.length <= 0 && (
-					<div>
-						<h1>Loading ...</h1>
+					<div style={{ textAlign: "center" }}>
+						<h6>Loading ....</h6>
 					</div>
 				)}
 			</div>
