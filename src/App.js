@@ -46,9 +46,11 @@ class App extends Component {
 
 		return (
 			<div className="main-screen">
-				{this.props.error !== "" && (
-					<div className="error-message">{this.props.error}</div>
-				)}
+				{this.props.error !== "" &&
+					this.props.token === "" &&
+					!this.props.isLoading && (
+						<div className="error-message">{this.props.error}</div>
+					)}
 				{this.props.isLoading ? (
 					<div style={{ textAlign: "center" }}>
 						<h6>Loading ....</h6>
