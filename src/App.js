@@ -14,7 +14,6 @@ class App extends Component {
 		this.state = {
 			userName: "",
 			password: "",
-			isLoading: false,
 		};
 	}
 
@@ -31,17 +30,13 @@ class App extends Component {
 	handleFormSubmit = (e) => {
 		const { history } = this.props;
 		e.preventDefault();
-		this.setState({ isLoading: true });
+
 		this.props.dispatch(
 			authorize(this.state.userName, this.state.password, history)
 		);
 
 		this.setState({ userName: "" });
 		this.setState({ password: "" });
-
-		setTimeout(() => {
-			this.setState({ isLoading: false });
-		}, 1000);
 	};
 	render() {
 		const isToken = localStorage.hasOwnProperty("token");
@@ -54,7 +49,7 @@ class App extends Component {
 				{this.props.error !== "" && (
 					<div className="error-message">{this.props.error}</div>
 				)}
-				{this.state.isLoading ? (
+				{this.props.isLoading ? (
 					<div style={{ textAlign: "center" }}>
 						<h6>Loading ....</h6>
 					</div>
@@ -79,6 +74,7 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
 	token: state.auth.token,
 	error: state.auth.error,
+	isLoading: state.auth.isLoading,
 });
 
 export default connect(mapStateToProps)(App);
