@@ -47,7 +47,8 @@ body {
 		border: 1px solid #888;
 	}
 	button:disabled {
-		display: none;
+		// display: none;
+		visibility: hidden;
 	}
 	.error-message {
 		text-align: center;
