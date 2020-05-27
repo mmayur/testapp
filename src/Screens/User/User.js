@@ -79,8 +79,8 @@ const User = () => {
 // 	users: state.usersReducer,
 // });
 
-const mapDispatchToProps = (dispatch) => ({
-	getUsersSaga: () => dispatch(getUsersSaga()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+// 	getUsersSaga: () => dispatch(getUsersSaga()),
+// });
 
-export default connect(mapDispatchToProps)(User);
+export default connect()(User);
